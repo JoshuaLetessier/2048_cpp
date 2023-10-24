@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="2048_cpp.cpp" />
     <ClCompile Include="Grille.cpp" />
+    <ClCompile Include="Tuiles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grille.h" />
+    <ClInclude Include="Tuiles.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

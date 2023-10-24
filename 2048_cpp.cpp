@@ -4,33 +4,138 @@
 #include <iostream>
 #include <Windows.h>
 #include <iomanip>
+#include "Tuiles.h"
 
 using namespace std;
 
 
-int randomPos()
+
+int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 {
-	int x = rand() % 3 + 0;
-	return x;
+	int _grille[4][4] = {};
+	memcpy(_grille, grille, sizeof(int) * 4 * 4); //copie des données de grille dans grille
+	int _direction = 0;
+	_direction = direction;
+	
+	
+
+	int z = 0;
+	int x = 0;
+	if (_direction == 1 || _direction == 2)
+	{
+		
+		for (int i = 0; i < 4; i++)
+		{
+			
+			for (int y = 0; y < 4; y++)
+			{
+				if (_direction == 1) //haut
+				{
+					
+					if (_grille[i][y] > 0)
+					{
+						
+						for (int v = i; v < 0; v--)
+						{
+							
+							if (_grille[v][y] == 0)
+							{
+								_grille[v][y] = _grille[i][y];
+							}
+							else if (_grille[v][y] == _grille[i][y])
+							{
+								_grille[x][z] = _grille[v][y] + _grille[i][y];
+
+							}
+						}
+					}
+
+				}
+
+				else if (_direction == 2)//droite
+				{
+					if (_grille[i][y] > 0)
+					{
+						for (int w = i; w > 3; w++)
+						{
+							if (_grille[i][w] == 0)
+							{
+								_grille[i][w] = _grille[i][y];
+							}
+							else if (_grille[i][w] == _grille[i][y])
+							{
+								_grille[x][z] = _grille[i][w] + _grille[i][y];
+							}
+						}
+					}
+				}
+
+			}
+
+		}
+	}
+	else if(_direction == -1 || _direction == -2)
+	{
+		
+		for (int i = 3; i > 0; i--)
+		{
+			for (int y = 3; y > 0; y--)
+			{
+				
+				if (_direction == -1)//bas
+				{
+					
+					if (_grille[i][y] > 0)
+					{
+						
+						for (int v = i; v < 3; v++)
+						{
+							
+							if (_grille[v][y] == 0)
+							{
+								_grille[v][y] = _grille[i][y];
+							}
+							else if (_grille[v][y] == _grille[i][y])
+							{
+								
+								_grille[x][z] = _grille[v][y] + _grille[i][y];
+
+							}
+						}
+					}
+				}
+				else if (_direction == -2)//gauche
+				{
+
+				}
+			}
+		}
+	}
+	
+
+
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			cout << setw(4) << _grille[i][y] << " ";
+		}
+		cout << endl;
+	}
+
+	return *_grille;
 }
 
-int randomvaleur()
-{
-	int x = rand() % 20 + 0;
-	if (x < 10)
-	{
-		return 2;
-	}
-	else
-	{
-		return 4;
-	}
-}
+
 
 int main()
 {
+
 	int grille[4][4] = {};
 	bool inGame = true;
+
+	Tuiles tuiles(0, 0, 0);
 	//cr�ation grille vide
 	for (int i = 0; i < 4; i++)
 	{
@@ -40,14 +145,21 @@ int main()
 		}
 	}
 
+
 	//cr�ation deux premi�res tuiles
 	for (int i = 0; i < 2; i++)
 	{
-		int longeur = randomPos();
-		int largeur = randomPos();
-		int value = randomvaleur();
-		grille[longeur][largeur] = value;
+		/*int longeur = tuiles.randomPos();
+		cout << longeur << endl;
+		int largeur = tuiles.randomPos();
+		cout << largeur << endl;
+		int value = tuiles.randomvaleur();
+		cout << value << endl;*/
+
+
+		grille[tuiles.randomPos() + i][tuiles.randomPos() + i] = tuiles.randomvaleur();
 	}
+
 
 	//boucle de jeux
 	while (inGame)
@@ -66,28 +178,38 @@ int main()
 
 		cout << "appuie touche deplacement" << endl;
 		char entreClavier = std::cin.get();
-
+		int direction = 0;
 		switch (entreClavier)
 		{
 		case 'z':
 			std::cout << "Vers le haut" << endl;
+			direction = 1;
+			deplacementTuiles(grille, direction);
 			//déplacements tuiles
 			//actualistaions tuiles
 			//affichage new grilles
 			break;
 		case 'q':
 			std::cout << "Vers la gauche" << endl;
-			break;
-		case 's':
-			std::cout << "Vers la droite" << endl;
+			direction = -2;
+			deplacementTuiles(grille, direction);
 			break;
 		case 'd':
+			std::cout << "Vers la droite" << endl;
+			direction = 2;
+			deplacementTuiles(grille, direction);
+			break;
+		case 's':
 			std::cout << "Vers le bas" << endl;
+			direction = -1;
+			deplacementTuiles(grille, direction);
 			break;
 		default:
 			cout << "Touche non valide" << endl;
 			break;
 		}
+
+
 
 		inGame = false;
 
@@ -97,65 +219,3 @@ int main()
 	return 0;
 }
 
-/*
-while (0)
-{
-	bool startGame = false;
-	Grille grille{4,4};
-
-	if (startGame == false)
-	{
-		startGame = true;
-		for (int i = 0;  i < 2; i++)
-		{
-			int x = rand() % 3 + 0;
-			int y = rand() % 3 + 0;
-			int z = rand() % 1 + 0;
-			int value;
-
-			if (z == 0)
-			{
-				value = 2;
-			}
-			else {
-				value = 4;
-			}
-
-			if (grille.createGrille[x][y] == 0)
-			{
-				grille.createGrille[x][y] = value;
-			}
-
-
-
-;
-
-			}
-
-
-
-		}
-		else
-		{
-			//mouvement clavier
-			char entreClavier = std::cin.get();
-			switch (entreClavier)
-			{
-			case '72':
-				std::cout << "Vers le haut";
-				break;
-			case '75':
-				std::cout << "Vers la gauche";
-				break;
-			case '77':
-				std::cout << "Vers la droite";
-				break;
-			case '80':
-				std::cout << "Vers le bas";
-				break;
-
-
-			}
-		}
-	}
-	*/

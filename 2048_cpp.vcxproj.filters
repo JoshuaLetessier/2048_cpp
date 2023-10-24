@@ -24,9 +24,15 @@
     <ClCompile Include="2048_cpp.cpp">
       <Filter>Fichiers sources\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Tuiles.cpp">
+      <Filter>Fichiers sources\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grille.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Tuiles.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
