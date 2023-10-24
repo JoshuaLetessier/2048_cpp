@@ -23,7 +23,7 @@ int randomvaleur()
 	}
 	else
 	{
-		return 1024;
+		return 4;
 	}
 }
 
