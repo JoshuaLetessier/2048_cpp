@@ -71,6 +71,9 @@ int main()
 		{
 		case 'z':
 			std::cout << "Vers le haut" << endl;
+			//déplacements tuiles
+			//actualistaions tuiles
+			//affichage new grilles
 			break;
 		case 'q':
 			std::cout << "Vers la gauche" << endl;
