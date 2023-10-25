@@ -77,9 +77,9 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 	else if(_direction == -1 || _direction == -2)
 	{
 		
-		for (int i = 3; i > 0; i--)
+		for (int i = 3; i >= 0; i--)
 		{
-			for (int y = 3; y > 0; y--)
+			for (int y = 3; y >= 0; y--)
 			{
 				
 				if (_direction == -1)//bas
@@ -90,23 +90,42 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 						
 						for (int v = i; v < 3; v++)
 						{
-							
-							if (_grille[v][y] == 0)
+							cout << v << endl;
+							if (_grille[v+1][y] == 0)
 							{
-								_grille[v][y] = _grille[i][y];
+								_grille[v+1][y] = _grille[i][y];
+								_grille[i][y] = 0;
 							}
-							else if (_grille[v][y] == _grille[i][y])
+							else if (_grille[v+1][y] == _grille[i][y])
 							{
 								
-								_grille[x][z] = _grille[v][y] + _grille[i][y];
+								_grille[x][z] = _grille[v+1][y] + _grille[i][y];
 
 							}
 						}
 					}
 				}
-				else if (_direction == -2)//gauche
+				else if (_direction == -2)//gauche ou droite peut être ?
 				{
+					if (_grille[i][y] > 0)
+					{
 
+						for (int w = i; w < 3; w++)
+						{
+							cout << w << endl;
+							if (_grille[i][w+1] == 0)
+							{
+								_grille[i][w+1] = _grille[i][y];
+								_grille[i][y] = 0;
+							}
+							else if (_grille[i][w+1] == _grille[i][y])
+							{
+
+								_grille[x][z] = _grille[i][w+1] + _grille[i][y];
+
+							}
+						}
+					}
 				}
 			}
 		}
