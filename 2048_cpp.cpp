@@ -16,6 +16,7 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 	memcpy(_grille, grille, sizeof(int) * 4 * 4); //copie des données de grille dans grille
 	int _direction = 0;
 	_direction = direction;
+
 	
 	
 
@@ -23,29 +24,34 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 	int x = 0;
 	if (_direction == 1 || _direction == 2)
 	{
-		
+
 		for (int i = 0; i < 4; i++)
 		{
-			
+
 			for (int y = 0; y < 4; y++)
 			{
 				if (_direction == 1) //haut
 				{
-					
+
 					if (_grille[i][y] > 0)
 					{
-						
-						for (int v = i; v > 0; v--)
+
+
+						for (int v = i-1; v >= 0; v--)
 						{
-							
-							if (_grille[v-1][y] == 0)
+							cout << _grille[v - 1][y] << endl;
+							cout << _grille[i][y] << endl;
+							if (_grille[v - 1][y] == 0)
 							{
-								_grille[v-1][y] = _grille[i][y];
+								_grille[v - 1][y] = _grille[i][y];
 								_grille[i][y] = 0;
+						
 							}
 							else if (_grille[v-1][y] == _grille[i][y])
 							{
-								_grille[x][z] = _grille[v-1][y] + _grille[i][y];
+								_grille[v-1][y] = _grille[v - 1][y] + _grille[i][y];
+								
+
 								_grille[i][y] = 0;
 							}
 						}
@@ -57,17 +63,23 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 				{
 					if (_grille[i][y] > 0)
 					{
-						for (int w = i; w < 3; w++)
+
+						for(int w = i; w > 3; w++)
+
 						{
-							if (_grille[i][w] == 0)
+							if (_grille[i][w-1] == 0)
 							{
-								_grille[i][w] = _grille[i][y];
-								_grille[i][w] = 0;
+
+								_grille[i][w-1] = _grille[i][y];
+								_grille[i][y] = 0;
+
 							}
-							else if (_grille[i][w] == _grille[i][y])
+							else if (_grille[i][w-1] == _grille[i][y])
 							{
-								_grille[x][z] = _grille[i][w] + _grille[i][y];
-								_grille[i][w] = 0;
+
+								_grille[x][z] = _grille[i][w-1] + _grille[i][y];
+								_grille[i][y] = 0;
+
 							}
 						}
 					}
@@ -77,55 +89,65 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 
 		}
 	}
-	else if(_direction == -1 || _direction == -2)
+	else if (_direction == -1 || _direction == -2)
 	{
-		
+
 		for (int i = 3; i >= 0; i--)
 		{
 			for (int y = 3; y >= 0; y--)
 			{
-				
+
 				if (_direction == -1)//bas
 				{
-					
-					if (_grille[i][y] > 0)
+
+					if (_grille[i][y] > 0 and i != 3)
 					{
-						
+
 						for (int v = i; v < 3; v++)
 						{
-							cout << v << endl;
-							if (_grille[v+1][y] == 0)
+							
+							if (_grille[v + 1][y] == 0)
 							{
-								_grille[v+1][y] = _grille[i][y];
+								_grille[v + 1][y] = _grille[i][y];
 								_grille[i][y] = 0;
-							}
-							else if (_grille[v+1][y] == _grille[i][y])
-							{
-								
-								_grille[x][z] = _grille[v+1][y] + _grille[i][y];
 
+								
+							}
+							else if (_grille[v + 1][y] == _grille[i][y])
+							{
+
+								_grille[i][y] = _grille[v][y] + _grille[i][y];
+								cout << _grille[i][y];
+								_grille[i][y] = 0;
+
+								
 							}
 						}
 					}
 				}
-				else if (_direction == -2)//gauche ou droite peut être ?
+				else if (_direction == -2)//gauche 
 				{
 					if (_grille[i][y] > 0)
 					{
 
-						for (int w = i; w < 3; w++)
+						for (int w = i-1; w < 3; w++)
 						{
 							cout << w << endl;
-							if (_grille[i][w+1] == 0)
+							if (_grille[i][w - 1] == 0)
 							{
-								_grille[i][w+1] = _grille[i][y];
+								_grille[i][w - 1] = _grille[i][y];
 								_grille[i][y] = 0;
 							}
-							else if (_grille[i][w+1] == _grille[i][y])
+							else if (_grille[i][w + 1] == _grille[i][y])
 							{
 
-								_grille[x][z] = _grille[i][w+1] + _grille[i][y];
 
+								
+
+
+
+								_grille[x][z] = _grille[i][w - 1] + _grille[i][y];
+								_grille[i][y] = 0;
 
 							}
 						}
@@ -134,12 +156,15 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 			}
 		}
 	}
+
 
 	Tuiles tuiles(0, 0, 0);
 	tuiles.ajoutTuile(_grille);
 
 
 
+
+	
 	for (int i = 0; i < 4; i++)
 	{
 		for (int y = 0; y < 4; y++)
@@ -158,7 +183,7 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 
 int main()
 {
-
+	srand(time(0));
 	int grille[4][4] = {};
 	bool inGame = true;
 
@@ -177,7 +202,9 @@ int main()
 	for (int i = 0; i < 2; i++)
 	{
 
-		grille[tuiles.randomPos() + i][tuiles.randomPos() + i] = tuiles.randomvaleur();
+
+		grille[tuiles.randomPos()][tuiles.randomPos()] = tuiles.randomvaleur();
+
 	}
 
 
