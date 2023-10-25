@@ -18,14 +18,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Grille.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="2048_cpp.cpp">
-      <Filter>Fichiers sources\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Tuiles.cpp">
       <Filter>Fichiers sources\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Grille.cpp">
+      <Filter>Fichiers sources\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="2048_cpp.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
