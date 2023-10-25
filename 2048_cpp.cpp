@@ -35,17 +35,18 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 					if (_grille[i][y] > 0)
 					{
 						
-						for (int v = i; v < 0; v--)
+						for (int v = i; v > 0; v--)
 						{
 							
-							if (_grille[v][y] == 0)
+							if (_grille[v-1][y] == 0)
 							{
-								_grille[v][y] = _grille[i][y];
+								_grille[v-1][y] = _grille[i][y];
+								_grille[i][y] = 0;
 							}
-							else if (_grille[v][y] == _grille[i][y])
+							else if (_grille[v-1][y] == _grille[i][y])
 							{
-								_grille[x][z] = _grille[v][y] + _grille[i][y];
-
+								_grille[x][z] = _grille[v-1][y] + _grille[i][y];
+								_grille[i][y] = 0;
 							}
 						}
 					}
@@ -56,15 +57,17 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 				{
 					if (_grille[i][y] > 0)
 					{
-						for (int w = i; w > 3; w++)
+						for (int w = i; w < 3; w++)
 						{
 							if (_grille[i][w] == 0)
 							{
 								_grille[i][w] = _grille[i][y];
+								_grille[i][w] = 0;
 							}
 							else if (_grille[i][w] == _grille[i][y])
 							{
 								_grille[x][z] = _grille[i][w] + _grille[i][y];
+								_grille[i][w] = 0;
 							}
 						}
 					}
@@ -123,6 +126,7 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 
 								_grille[x][z] = _grille[i][w+1] + _grille[i][y];
 
+
 							}
 						}
 					}
@@ -130,7 +134,24 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 			}
 		}
 	}
+
+	Tuiles tuiles(0, 0, 0);
+	bool ajoutVerif = false;
 	
+	while (ajoutVerif)
+	{
+		int value1 = rand() % 3 + 0;
+		int value2 = rand() % 3 + 0;
+		int i = rand() % 3 + 0;
+		int y = rand() % 3 + 0;;
+		cout << "test" << endl;
+
+		if (_grille[i][y] == 0) {
+			_grille[value1][value2] = tuiles.randomvaleur();
+			ajoutVerif = true;
+		}
+				
+	}
 
 
 
@@ -142,6 +163,8 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 		}
 		cout << endl;
 	}
+
+
 
 	return *_grille;
 }
@@ -168,13 +191,6 @@ int main()
 	//cr�ation deux premi�res tuiles
 	for (int i = 0; i < 2; i++)
 	{
-		/*int longeur = tuiles.randomPos();
-		cout << longeur << endl;
-		int largeur = tuiles.randomPos();
-		cout << largeur << endl;
-		int value = tuiles.randomvaleur();
-		cout << value << endl;*/
-
 
 		grille[tuiles.randomPos() + i][tuiles.randomPos() + i] = tuiles.randomvaleur();
 	}
