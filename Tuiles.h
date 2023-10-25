@@ -13,7 +13,7 @@ public:
 		this->value = value;
 	}
 
-	void ajoutTuile();
+	int ajoutTuile(int grille);
 	static int addTuile(int value1, int value2);
 	int randomvaleur();
 	int randomPos();
