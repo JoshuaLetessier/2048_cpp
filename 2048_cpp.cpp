@@ -36,6 +36,7 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 					if (_grille[i][y] > 0)
 					{
 
+
 						for (int v = i-1; v >= 0; v--)
 						{
 							cout << _grille[v - 1][y] << endl;
@@ -50,6 +51,7 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 							{
 								_grille[v-1][y] = _grille[v - 1][y] + _grille[i][y];
 								
+
 								_grille[i][y] = 0;
 							}
 						}
@@ -61,17 +63,23 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 				{
 					if (_grille[i][y] > 0)
 					{
+
 						for(int w = i; w > 3; w++)
+
 						{
 							if (_grille[i][w-1] == 0)
 							{
+
 								_grille[i][w-1] = _grille[i][y];
 								_grille[i][y] = 0;
+
 							}
 							else if (_grille[i][w-1] == _grille[i][y])
 							{
+
 								_grille[x][z] = _grille[i][w-1] + _grille[i][y];
 								_grille[i][y] = 0;
+
 							}
 						}
 					}
@@ -133,8 +141,14 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 							else if (_grille[i][w + 1] == _grille[i][y])
 							{
 
+
+								
+
+
+
 								_grille[x][z] = _grille[i][w - 1] + _grille[i][y];
 								_grille[i][y] = 0;
+
 							}
 						}
 					}
@@ -142,6 +156,11 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 			}
 		}
 	}
+
+
+	Tuiles tuiles(0, 0, 0);
+	tuiles.ajoutTuile(_grille);
+
 
 
 
@@ -154,6 +173,8 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 		}
 		cout << endl;
 	}
+
+
 
 	return *_grille;
 }
@@ -180,7 +201,10 @@ int main()
 	//cr�ation deux premi�res tuiles
 	for (int i = 0; i < 2; i++)
 	{
-		grille[tuiles.randomPos()+i][tuiles.randomPos()] = tuiles.randomvaleur();
+
+
+		grille[tuiles.randomPos()][tuiles.randomPos()] = tuiles.randomvaleur();
+
 	}
 
 

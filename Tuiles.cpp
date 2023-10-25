@@ -1,11 +1,30 @@
 #include "Tuiles.h"
 #include"cstdlib"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
-void Tuiles::ajoutTuile()
+int Tuiles::ajoutTuile(int grille)
 {
-	/*Tuiles::x = randomPos();
-	Tuiles::y = randomPos();
-	Tuiles::value = randomvaleur();*/
+
+	bool ajoutVerif = false;
+	srand(time(0));
+
+	while (!ajoutVerif)
+	{
+		int value1 = rand() % 3 + 0;
+		int value2 = rand() % 3 + 0;
+		int i = rand() % 3 + 0;
+		int y = rand() % 3 + 0;
+		cout << "Test+ " << i << endl;
+
+		if (grille[i][y] == 0) {
+			grille[value1][value2] = randomvaleur();
+			ajoutVerif = true;
+		}
+
+	}
+	return grille;
 }
 
 int Tuiles::addTuile(int value1, int value2)
