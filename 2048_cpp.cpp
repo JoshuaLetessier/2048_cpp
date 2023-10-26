@@ -159,9 +159,25 @@ int* deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 
 
 	Tuiles tuiles(0, 0, 0);
-	tuiles.ajoutTuile(_grille);
+	//tuiles.ajoutTuile(_grille);
 
+	bool ajoutVerif = false;
+	srand(time(0));
 
+	while (!ajoutVerif)
+	{
+		int value1 = rand() % 3 + 0;
+		int value2 = rand() % 3 + 0;
+		int i = rand() % 3 + 0;
+		int y = rand() % 3 + 0;
+		cout << "Test+ " << i << endl;
+
+		if (_grille[i][y] == 0) {
+			_grille[value1][value2] = tuiles.randomvaleur();
+			ajoutVerif = true;
+		}
+
+	}
 
 
 	

@@ -3,8 +3,7 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
-int Tuiles::ajoutTuile(int grille)
+/**int Tuiles::ajoutTuile(int grille)
 {
 
 	bool ajoutVerif = false;
@@ -25,7 +24,7 @@ int Tuiles::ajoutTuile(int grille)
 
 	}
 	return grille;
-}
+}*/
 
 int Tuiles::addTuile(int value1, int value2)
 
