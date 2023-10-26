@@ -97,7 +97,7 @@ void deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 	if (_direction == 1)
 	{
 
-		for (int i = 3; i  >0; i--)
+		for (int i = 3; i > 0; i--)
 		{
 
 			for (int y = 3; y > 0; y--)
@@ -141,7 +141,7 @@ void deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 				if (peutEtreDeplacee(_grille, i, y, _direction))
 				{
 
-					for (int w = y-1; w > 3; w--)
+					for (int w = y - 1; w > 3; w--)
 
 					{
 						if (_grille[i][w - 1] == 0)
@@ -175,10 +175,10 @@ void deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 				if (peutEtreDeplacee(_grille, i, y, _direction))
 				{
 
-					for (int v = i ; v < 3; v++)
+					for (int v = i; v < 3; v++)
 					{
 
-						
+
 						if (_grille[v + 1][y] == 0)
 						{
 							_grille[v + 1][y] = _grille[i][y];
@@ -189,7 +189,7 @@ void deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 						else if (_grille[v + 1][y] == _grille[i][y])
 						{
 
-							_grille[i][y] = _grille[v +1][y] + _grille[i][y];
+							_grille[i][y] = _grille[v + 1][y] + _grille[i][y];
 							cout << _grille[i][y];
 							_grille[i][y] = 0;
 
@@ -233,7 +233,7 @@ void deplacementTuiles(int grille[4][4] = {}, int direction = 0)
 	}
 
 
-	
+
 	Tuiles tuiles(0, 0, 0);
 	bool ajoutVerif = false;
 	srand(time(0));
@@ -390,14 +390,21 @@ int main()
 		}
 
 
+		for (int x = 0; x < 4; x++) {
+			for (int w = 0; w < 4; w++) {
+				if (peutEtreDeplacee(grille, x, w, direction) == false) {
+					inGame = false;
+				}
+			}
+		}
 
 		if (estFini(grille)) {
 			inGame = false;
 		}
-		else if (scoreMaxAtteint(grille)){
+
+		if (scoreMaxAtteint(grille)) {
 			inGame = false;
 		}
-
 
 	}
 
