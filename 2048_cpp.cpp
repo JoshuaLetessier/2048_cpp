@@ -287,11 +287,11 @@ bool scoreMaxAtteint(int grille[4][4] = {})
 		for (int y = 0; y < 4; y++)
 		{
 			if (grille[i][y] == 2048) {
-				return false;
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 
 int main()
@@ -389,14 +389,14 @@ int main()
 			}
 		}
 
-
+		/*
 		for (int x = 0; x < 4; x++) {
 			for (int w = 0; w < 4; w++) {
-				if (peutEtreDeplacee(grille, x, w, direction) == false) {
+				if (peutEtreDeplacee(grille, x, w, direction)) {
 					inGame = false;
 				}
 			}
-		}
+		}*/
 
 		if (estFini(grille)) {
 			inGame = false;
