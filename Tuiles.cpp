@@ -6,7 +6,7 @@ using namespace std;
 
 int Tuiles::ajoutTuile(int grille)
 {
-
+	/*
 	bool ajoutVerif = false;
 	srand(time(0));
 
@@ -24,7 +24,8 @@ int Tuiles::ajoutTuile(int grille)
 		}
 
 	}
-	return grille;
+	return grille;*/
+	return 0;
 }
 
 int Tuiles::addTuile(int value1, int value2)
