@@ -280,6 +280,20 @@ bool estFini(int grille[4][4] = {})
 	return true;
 }
 
+bool scoreMaxAtteint(int grille[4][4] = {})
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			if (grille[i][y] == 2048) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 int main()
 {
 	srand(time(0));
@@ -378,6 +392,9 @@ int main()
 
 
 		if (estFini(grille)) {
+			inGame = false;
+		}
+		else if (scoreMaxAtteint(grille)){
 			inGame = false;
 		}
 
