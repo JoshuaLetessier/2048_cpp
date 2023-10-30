@@ -5,20 +5,23 @@
 #include "Tuiles.h"
 #include "Grille.h"
 #include<conio.h>
+#include <SDL.h>
+#include "Window.h"
 
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
 
-
-
+	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Quit();
 	
 	srand(time(0));
 
 	Grille grille;
 	bool inGame = true;
+	Window window(500, 500);
 
 	//int const& valeur = grille.returnValue(grille.matricegrille, 0, 0);
 	//cout << valeur << endl;
@@ -27,8 +30,8 @@ int main()
 	//cr�ation deux premi�res tuiles
 	grille.genererTuileAleatoire(grille.matricegrille);
 	grille.genererTuileAleatoire(grille.matricegrille);
-
-
+	
+	
 
 	while (inGame)
 	{
