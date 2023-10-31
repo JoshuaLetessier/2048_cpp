@@ -28,7 +28,7 @@ void afficheValue(int value, SDL_Renderer* renderer, SDL_Rect rectangleGrille)
 
     SDL_Rect textRect = { centerX, centerY, textWidth, textHeight };
 
-    // Dessinez le texte au centre du rectangle
+    // Dessinez le texte au centre du rectangle//
     SDL_RenderCopy(renderer, texture, NULL, &textRect);
 
     // Libérez les ressources de texte et texture
