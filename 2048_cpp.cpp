@@ -15,7 +15,15 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "PROJECT SDL JL", "Projet 2048", NULL);
 
+	Window window(500, 500);
+
+	while (!window.isClosed())
+	{
+		window.pollEvents();
+		window.clear();
+	}
 
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_Quit();
@@ -24,7 +32,7 @@ int main(int argc, char* argv[])
 
 	Grille grille;
 	bool inGame = true;
-	Window window(500, 500);
+	
 
 	//int const& valeur = grille.returnValue(grille.matricegrille, 0, 0);
 	//cout << valeur << endl;
