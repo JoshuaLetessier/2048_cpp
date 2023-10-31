@@ -1,6 +1,9 @@
 #pragma once
-#include <SDL.h>
+
 #include "GameObject.h"
+
+
+class SDL_Renderer;
 
 class GrilleGameObject : public GameObject {
 public:

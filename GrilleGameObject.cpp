@@ -1,5 +1,8 @@
 #include "GrilleGameObject.h"
+
+#include <SDL.h>
 #include <SDL_ttf.h>
+
 
 GrilleGameObject::GrilleGameObject(int x, int y, int width, int height, int** grid, int rows, int columns)
     : GameObject(x, y, width, height), grid(grid), rows(rows), columns(columns) {
