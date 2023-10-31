@@ -67,7 +67,7 @@ void GrilleGameObject::render(SDL_Renderer* renderer) {
             // Dessinez la tuile en fonction de "value" à l'emplacement (x, y).
             // Vous pouvez utiliser SDL_RenderFillRect pour dessiner un rectangle, par exemple.
             // Assurez-vous de calculer les coordonnées correctes pour chaque tuile.
-            // Vous pouvez également afficher le contenu de chaque tuile (valeur) au centre du rectangle.
+            /// Vous pouvez également afficher le contenu de chaque tuile (valeur) au centre du rectangle.
         }
     }
 
