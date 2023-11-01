@@ -18,11 +18,14 @@ int main(int argc, char* argv[])
 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "PROJECT SDL JL", "Projet 2048", NULL);
 
 	Window window(500, 500);
+	
 
 	while (!window.isClosed())
 	{
 		window.pollEvents();
 		window.clear();
+		window.drawFilledRectangle(400, 400);
+		SDL_RenderPresent(window.getRenderer());
 	}
 
 	SDL_Init(SDL_INIT_VIDEO);

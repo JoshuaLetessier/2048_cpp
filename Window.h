@@ -1,7 +1,9 @@
 #pragma once
 
+
 struct SDL_Window;
 struct SDL_Renderer;
+
 
 class Window
 {
@@ -11,6 +13,8 @@ public:
     SDL_Window* win;
     SDL_Renderer* rend;
     bool _closed = false;
+
+    //Window(int hauteur, int largeur);
 
     Window(int hauteur, int largeur);
 
@@ -22,6 +26,10 @@ public:
     }
 
     void clear() const;
+
+    void drawFilledRectangle(int width, int height);
+
+    SDL_Renderer* getRenderer() const;
 
     
     inline bool isClosed() const {
