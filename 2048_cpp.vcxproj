@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ludov\Documents\SDL\SDL2-2.28.4\include;C:\Users\ludov\Documents\SDL\SDL2_ttf-2.20.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ludov\Documents\SDL\SDL2-2.28.4\lib\x64;C:\Users\ludov\Documents\SDL\SDL2_ttf-2.20.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDL\SDL2-2.28.4\include;C:\SDL\SDL2_ttf-2.20.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL\SDL2_ttf-2.20.2\lib\x64;C:\SDL\SDL2-2.28.4\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -137,14 +137,12 @@
     <ClCompile Include="Grille.cpp" />
     <ClCompile Include="GrilleGameObject.cpp" />
     <ClCompile Include="Tuiles.cpp" />
-    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grille.h" />
     <ClInclude Include="GrilleGameObject.h" />
     <ClInclude Include="Tuiles.h" />
-    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

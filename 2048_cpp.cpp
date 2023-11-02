@@ -1,32 +1,18 @@
 #include"cstdlib"
 #include <iostream>
-#include <Windows.h>
 #include <iomanip>
 #include "Tuiles.h"
 #include "Grille.h"
 #include<conio.h>
-#include<SDL.h>
 #include <SDL.h>
 #include "Window.h"
+#include "GrilleGameObject.h"
 
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "PROJECT SDL JL", "Projet 2048", NULL);
-
-	Window window(500, 500);
-	
-
-	while (!window.isClosed())
-	{
-		window.pollEvents();
-		window.clear();
-		window.drawFilledRectangle(400, 400);
-		SDL_RenderPresent(window.getRenderer());
-	}
 
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_Quit();
@@ -35,23 +21,25 @@ int main(int argc, char* argv[])
 
 	Grille grille;
 	bool inGame = true;
-	
+	Window window(500, 500);
 
 	//int const& valeur = grille.returnValue(grille.matricegrille, 0, 0);
 	//cout << valeur << endl;
 	Tuiles tuiles(0, 0, 0);
-
+	
 	//cr�ation deux premi�res tuiles
 	grille.genererTuileAleatoire(grille.matricegrille);
 	grille.genererTuileAleatoire(grille.matricegrille);
 	
-	
+	GrilleGameObject grilleGO(0,0,0,0, grille);
 
 	while (inGame)
 	{
 		// Affichage de la grille
+		
 		grille.afficherGrille(grille.matricegrille);
-
+		
+		grilleGO.render(window.rend);
 		/*if (!grille.mouvementsPossibles()) {
 			cout << "Le jeu est terminé ! Aucun mouvement possible." << endl;
 			inGame = false;

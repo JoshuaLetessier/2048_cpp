@@ -1,18 +1,18 @@
 #pragma once
-
 #include "GameObject.h"
-
+#include "Grille.h"
+#include "Tuiles.h"  // N'oubliez pas d'inclure la classe Tuiles
+#include <SDL.h>
 
 class SDL_Renderer;
 
 class GrilleGameObject : public GameObject {
 public:
-    GrilleGameObject(int x, int y, int width, int height, int** grid, int rows, int columns);
-
-    void render(SDL_Renderer* renderer) override;
+    GrilleGameObject(SDL_Renderer* renderer, Grille& grille);
+    void render();
 
 private:
-    int** grid;
-    int rows;
-    int columns;
+    SDL_Renderer* renderer;
+    Grille& grille;
+    Tuiles tuiles[4][4];
 };

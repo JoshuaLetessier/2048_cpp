@@ -2,11 +2,10 @@
 
 class Tile : public GameObject {
 public:
-    Tile(int x, int y, int width, int height, int value) : GameObject(x, y, width, height), value(value) {}
+    Tile(int x, int y, int width, int height, int grid[4][4]) : GameObject(x, y, width, height, grid[4][4]) {}
 
     void render(SDL_Renderer* renderer) override {
-        // Ici, vous devez utiliser les fonctions SDL pour dessiner la tuile en fonction de ses coordonnées x, y et de sa valeur.
-        // Par exemple, vous pouvez dessiner un rectangle rempli avec la couleur appropriée et afficher la valeur à l'intérieur.
+       
     }
 
 private:
