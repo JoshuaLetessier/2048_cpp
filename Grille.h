@@ -27,6 +27,8 @@ public:
 	bool mouvementsPossibles();
 	bool peutFusionner(int tuileActuelle, int tuileSuivante);
 	void genererTuileAleatoire(int grille[4][4]);
+
+	
 	bool estFinJeu(int grille[4][4]);
 	void mettreAJourScore(int valeur);
 	void afficherGrille(int grille[4][4]);

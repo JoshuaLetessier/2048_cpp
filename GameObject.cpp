@@ -1,13 +1,7 @@
-#include "GameObject.h"
+#pragma once
 
-class Tile : public GameObject {
+class GameObject {
 public:
-    Tile(int x, int y, int width, int height, int grid[4][4]) : GameObject(x, y, width, height, grid[4][4]) {}
-
-    void render(SDL_Renderer* renderer) override {
-       
-    }
-
-private:
-    int value;
+    virtual void dessiner() = 0; // Méthode virtuelle pure pour le dessin
+    virtual void mettreAJour() = 0; // Méthode virtuelle pure pour la mise à jour
 };

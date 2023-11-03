@@ -4,7 +4,7 @@
 #include "Tuiles.h"  // N'oubliez pas d'inclure la classe Tuiles
 #include <SDL.h>
 
-class SDL_Renderer;
+//class SDL_Renderer;
 
 class GrilleGameObject : public GameObject {
 public:

@@ -4,6 +4,8 @@
 #include <vcruntime_string.h>
 #include <iostream>
 #include <iomanip>
+#include "Window.h"
+
 using namespace std;
 
 int Grille::returnValue(int grille[4][4], int i, int y)
@@ -141,7 +143,8 @@ bool Grille::peutFusionner(int tuileActuelle, int tuileSuivante)
 
 void Grille::genererTuileAleatoire(int grille[4][4])
 {
-	Tuiles tuiles{ 0,0,0 };
+	SDL_Renderer* renderer = nullptr;
+	Tuiles tuiles{renderer, 0,0,0 };
 	int x, y;
 	int value = tuiles.randomvaleur(); // Générer une valeur aléatoire en utilisant la fonction de la classe Tuiles
 
@@ -152,6 +155,7 @@ void Grille::genererTuileAleatoire(int grille[4][4])
 
 	// Vous avez maintenant (x, y) comme position de tuile vide
 	grille[x][y] = value;
+	
 }
 
 

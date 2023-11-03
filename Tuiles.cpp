@@ -1,60 +1,43 @@
 #include "Tuiles.h"
-#include"cstdlib"
+#include <cstdlib>
 #include <iostream>
 #include <iomanip>
 #include <SDL.h>
+#include <SDL_image.h>
+
 using namespace std;
 
+Tuiles::Tuiles(SDL_Renderer* renderer, int x, int y, int value) : renderer(renderer), x(x), y(y), value(value) {
+	this->x = x;
+	this->y = y;
+	this->value = value;
+}
 
-/*Tuiles::Tuiles(SDL_Renderer* renderer, int x, int y, int value)
-	: renderer(renderer) {
-	// Chargez la texture en fonction de la valeur
-	switch (value) {
-	case 2:
-		texture = IMG_LoadTexture(renderer, "images/2.png");
-		break;
-	case 4:
-		texture = IMG_LoadTexture(renderer, "images/4.png");
-		break;
-	case 8:
-		texture = IMG_LoadTexture(renderer, "images/8.png");
-		break;
-		// Ajoutez des cas pour les autres valeurs si nécessaire
-	default:
-		texture = nullptr;
-		break;
+Tuiles::~Tuiles() {
+	SDL_DestroyTexture(texture); // Libérer la texture lorsque l'objet est détruit
+}
+
+
+void Tuiles::dessiner() {
+	if (texture) {
+		// Définis la position et les dimensions de la tuile
+		SDL_Rect rect{};
+		rect.x = x;
+		rect.y = y;
+		rect.w = 100;  // Largeur de la tuile
+		rect.h = 100;  // Hauteur de la tuile
+
+		// Dessine la tuile en utilisant la texture chargée
+		SDL_RenderCopy(renderer, texture, NULL, &rect);
 	}
-
-	rect.x = x;
-	rect.y = y;
-	rect.w = 64;  // Largeur de la tuile
-	rect.h = 64;  // Hauteur de la tuile
-}*/
-
-
-
-int Tuiles::ajoutTuile(int grille)
-{
-	/*
-	bool ajoutVerif = false;
-	srand(time(0));
-
-	while (!ajoutVerif)
-	{
-		int value1 = rand() % 3 + 0;
-		int value2 = rand() % 3 + 0;
-		int i = rand() % 3 + 0;
-		int y = rand() % 3 + 0;
-		cout << "Test+ " << i << endl;
-
-		if (grille[i][y] == 0) {
-			grille[value1][value2] = randomvaleur();
-			ajoutVerif = true;
-		}
-
+}
+void Tuiles::render() {
+	// Affichez la tuile en utilisant sa texture
+	SDL_Texture* texture = nullptr;
+	if (texture) {
+		SDL_Rect rect{};
+		SDL_RenderCopy(renderer, texture, NULL, &rect);
 	}
-	return grille;*/
-	return 0;
 }
 
 int Tuiles::addTuile(int value1, int value2)
@@ -85,9 +68,3 @@ int Tuiles::randomPos()
 	return x;
 }
 
-/*void Tuiles::render() {
-	// Affichez la tuile en utilisant sa texture
-	if (texture) {
-		SDL_RenderCopy(renderer, texture, NULL, &rect);
-	}
-}*/
