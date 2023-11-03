@@ -135,14 +135,12 @@
     <ClCompile Include="2048_cpp.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grille.cpp" />
-    <ClCompile Include="GrilleGameObject.cpp" />
     <ClCompile Include="Tuiles.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grille.h" />
-    <ClInclude Include="GrilleGameObject.h" />
     <ClInclude Include="Tuiles.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

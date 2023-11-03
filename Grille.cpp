@@ -1,24 +1,15 @@
-#include "Grille.h"
-#include "Tuiles.h"
+//création de la grille et gestion des déplacements
 
 #include <vcruntime_string.h>
 #include <iostream>
 #include <iomanip>
+
+#include "Grille.h"
+#include "Tuiles.h"
 #include "Window.h"
 
 using namespace std;
 
-int Grille::returnValue(int grille[4][4], int i, int y)
-{
-	if (grille == nullptr)
-	{
-		return 0;
-	}
-	else
-	{
-		return grille[i][y];
-	}
-}
 void Grille::deplacementTuiles(int grille[4][4], int direction)
 {
 	if (direction == 1)
@@ -40,15 +31,6 @@ void Grille::deplacementTuiles(int grille[4][4], int direction)
 	genererTuileAleatoire(grille);
 	system("cls");
 
-}
-
-bool Grille::estDansLimites(int i, int j)
-{
-	if (i < 4 && j < 4)
-	{
-		return true;
-	}
-	return false;
 }
 
 bool Grille::estDeplacementPossible(int grille[4][4], int direction)
@@ -133,8 +115,6 @@ bool Grille::mouvementsPossibles()
 	return false;
 }
 
-
-
 bool Grille::peutFusionner(int tuileActuelle, int tuileSuivante)
 {
 	// Vérifiez si les deux tuiles peuvent fusionner
@@ -144,20 +124,18 @@ bool Grille::peutFusionner(int tuileActuelle, int tuileSuivante)
 void Grille::genererTuileAleatoire(int grille[4][4])
 {
 	SDL_Renderer* renderer = nullptr;
-	Tuiles tuiles{renderer, 0,0,0 };
+	Tuiles tuiles{ renderer, 0,0,0 };
 	int x, y;
-	int value = tuiles.randomvaleur(); // Générer une valeur aléatoire en utilisant la fonction de la classe Tuiles
+	int value = tuiles.randomvaleur();
 
 	do {
-		x = tuiles.randomPos(); // Générer une position aléatoire en utilisant la fonction de la classe Tuiles
-		y = tuiles.randomPos(); // Générer une position aléatoire en utilisant la fonction de la classe Tuiles
+		x = tuiles.randomPos();
+		y = tuiles.randomPos();
 	} while (grille[x][y] != 0);
 
-	// Vous avez maintenant (x, y) comme position de tuile vide
 	grille[x][y] = value;
-	
-}
 
+}
 
 bool Grille::estFinJeu(int grille[4][4])
 {
@@ -166,6 +144,7 @@ bool Grille::estFinJeu(int grille[4][4])
 		for (int j = 0; j < 4; j++) {
 			if (grille[i][j] == 2048) {
 				return true;
+				cout << "Victoire" << endl; // ajout d'une méthode avec affichage de la victoire
 			}
 		}
 	}
@@ -174,20 +153,12 @@ bool Grille::estFinJeu(int grille[4][4])
 	for (int direction = -2; direction <= 2; direction++) {
 		if (estDeplacementPossible(grille, direction)) {
 			// S'il y a au moins un déplacement possible, le jeu n'est pas terminé
-			return false;
+			return false; // ajout d'une méthode avec affichage de la défaite
 		}
 	}
 
-	// Si aucune des conditions ci-dessus n'est remplie, le jeu est terminé
+
 	return true;
-}
-
-
-void Grille::mettreAJourScore(int valeurFusion)
-{
-	// Vous pouvez ajouter la valeur de la fusion à votre score actuel
-	int score{};
-	score = score + valeurFusion;
 }
 
 void Grille::afficherGrille(int grille[4][4])
@@ -299,4 +270,23 @@ void Grille::deplacerDroite(int grille[4][4])
 			}
 		}
 	}
+}
+
+int Grille::returnValue(int grille[4][4], int i, int y)
+{
+	if (grille == nullptr)
+	{
+		return 0;
+	}
+	else
+	{
+		return grille[i][y];
+	}
+}
+
+void Grille::mettreAJourScore(int valeurFusion)
+{
+	//si on veut afficher un score plus tard
+	int score{};
+	score = score + valeurFusion;
 }

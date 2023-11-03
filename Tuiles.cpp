@@ -1,9 +1,12 @@
-#include "Tuiles.h"
+//création des Tuiles
+
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
 #include <SDL.h>
 #include <SDL_image.h>
+
+#include "Tuiles.h"
 
 using namespace std;
 
@@ -17,20 +20,6 @@ Tuiles::~Tuiles() {
 	SDL_DestroyTexture(texture); // Libérer la texture lorsque l'objet est détruit
 }
 
-
-void Tuiles::dessiner() {
-	if (texture) {
-		// Définis la position et les dimensions de la tuile
-		SDL_Rect rect{};
-		rect.x = x;
-		rect.y = y;
-		rect.w = 100;  // Largeur de la tuile
-		rect.h = 100;  // Hauteur de la tuile
-
-		// Dessine la tuile en utilisant la texture chargée
-		SDL_RenderCopy(renderer, texture, NULL, &rect);
-	}
-}
 void Tuiles::render() {
 	// Affichez la tuile en utilisant sa texture
 	SDL_Texture* texture = nullptr;
@@ -60,7 +49,6 @@ int Tuiles::randomvaleur()
 		return 4;
 	}
 }
-
 
 int Tuiles::randomPos()
 {

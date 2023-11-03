@@ -1,4 +1,6 @@
 #pragma once
+
+//création de la grille et gestion des déplacements
 class Grille
 {
 public:
@@ -19,16 +21,11 @@ public:
 	}
 
 	int returnValue(int grille[4][4], int i, int y);
-
 	void deplacementTuiles(int grille[4][4], int direction);
-
-	bool estDansLimites(int i, int j);
 	bool estDeplacementPossible(int grille[4][4], int direction);
 	bool mouvementsPossibles();
 	bool peutFusionner(int tuileActuelle, int tuileSuivante);
 	void genererTuileAleatoire(int grille[4][4]);
-
-	
 	bool estFinJeu(int grille[4][4]);
 	void mettreAJourScore(int valeur);
 	void afficherGrille(int grille[4][4]);

@@ -1,10 +1,12 @@
-﻿#include "Window.h"
+﻿//Creation de la fennetre et affichage des élements
+
 #include <SDL.h>
 #include <string>
-#include "Tuiles.h"
 #include <SDL_image.h>
 #include <iostream>
 
+#include "Window.h"
+#include "Tuiles.h"
 
 using namespace std;
 
@@ -66,6 +68,7 @@ void Window::drawTilesRectangles(int width, int height)
 	int y = (windowHeight - height) / 2;
 	int j = 150;
 	int w = 150;
+	//dessins de la grille
 	for (int i = 0; i < 4; i++)
 	{
 		
@@ -100,7 +103,7 @@ void Window::drawTilesPictures(int windowWidth, int windowHeight, Grille grille)
 
 			tileValue = 2;
 			// Charge l'image de la tuile en fonction de sa valeur
-			std::string imagePath = "images/" + std::to_string(tileValue) + ".bmp";  // Assure-toi que les images BMP sont dans le répertoire "images"
+			std::string imagePath = "images/" + std::to_string(tileValue) + ".bmp";
 			SDL_Surface* imageSurface = SDL_LoadBMP(imagePath.c_str());
 			
 
@@ -128,8 +131,6 @@ void Window::drawTilesPictures(int windowWidth, int windowHeight, Grille grille)
 		}
 	}
 }
-
-
 
 SDL_Renderer* Window::getRenderer() const {
 	return rend;

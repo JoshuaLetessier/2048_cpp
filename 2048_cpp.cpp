@@ -1,14 +1,11 @@
-#include"cstdlib"
 #include <iostream>
-#include <Windows.h>
 #include <iomanip>
+#include <conio.h>
+#include <SDL.h>
+
 #include "Tuiles.h"
 #include "Grille.h"
-#include<conio.h>
-#include<SDL.h>
-#include <SDL.h>
 #include "Window.h"
-
 
 using namespace std;
 
@@ -22,7 +19,6 @@ int main(int argc, char* argv[])
 	SDL_Event event{};
 	while (!window.isClosed()) //boucle de la fenetre
 	{
-		
 		window.pollEvents();
 		window.clear();
 		//window.drawFilledRectangle(400, 400);
@@ -88,7 +84,6 @@ int main(int argc, char* argv[])
 				}
 			}
 		}
-
 	}
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -157,9 +152,9 @@ int main(int argc, char* argv[])
 			cout << "Le jeu est terminé ! Aucun mouvement possible." << endl;
 			inGame = false;
 			break;
-		}*/
+		}
 	
 
-	//}
+	//}*/
 	return 0;
 }
